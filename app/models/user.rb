@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   
   #RAILS
   attr_accessible :name, :email, :password, :password_confirmation
+  
+  has_many :microposts, :dependent => :destroy
+
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -39,6 +42,12 @@ class User < ActiveRecord::Base
     return user if user.salt == cookie_salt
 
   end
+  
+  def feed
+    # This is preliminary. See Chapter 12 for the full implementation.
+    Micropost.where("user_id = ?", id)
+  end
+
 
 
 

@@ -25,6 +25,10 @@ module SessionsHelper
     user == current_user
   end
   
+  def authenticate
+    deny_access unless signed_in?
+  end
+  
   def deny_acces
     store_location
     redirect_to signin_path, :notice => "Please sing in to acces this page."
