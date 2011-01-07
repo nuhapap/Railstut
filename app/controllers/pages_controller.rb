@@ -9,7 +9,9 @@ class PagesController < ApplicationController
   end
 
 
-
+  def printout
+    @title = "Printout"
+  end
 
   def contact
     @title = "Contact"

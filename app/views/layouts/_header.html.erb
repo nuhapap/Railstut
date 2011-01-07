@@ -1,10 +1,18 @@
+<!-- itt van az, hogy megjelenít stb -->
 <header>
   <%= link_to logo, root_path %>
   <nav class="round">
     <ul>
       <li><%= link_to "Home", root_path %></li>
+      <!-- ha be van jelentkezve -->
       <% if signed_in? %>
+      
+      <!--csak beleírtam par dolgot-->
+      <!--a route cuccban van maga a printout_path-->
+      <li><%= link_to "Print Out", printout_path %></li>
+      <!--users/_user.html.erb-->
       <li><%= link_to "Users", users_path %></li>
+      
       <li><%= link_to "Profile", current_user %></li>
       <li><%= link_to "Settings", edit_user_path(current_user) %></li>
       <% end %>

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
   
   #RAILS
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :date
   
   has_many :microposts, :dependent => :destroy
   has_many :relationships, :foreign_key => "follower_id",

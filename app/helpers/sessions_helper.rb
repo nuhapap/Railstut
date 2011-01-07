@@ -1,4 +1,5 @@
 module SessionsHelper
+  #cookietárolás a bejelentkezéshez
   def sign_in(user)
     cookies.permanent.signed[:remember_token] = [user.id, user.salt]
     self.current_user = user
@@ -29,6 +30,7 @@ module SessionsHelper
     deny_access unless signed_in?
   end
   
+  #ha nem vagy bejelentkezve
   def deny_acces
     store_location
     redirect_to signin_path, :notice => "Please sing in to acces this page."

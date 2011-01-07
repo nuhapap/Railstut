@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :except => [:show, :new, :create]
+  #elofelteltel az updatehez
   before_filter :correct_user, :only => [:edit, :update]
+  #elofeltetel az admin torlesi jogához
   before_filter :admin_user,   :only => :destroy
 
 
   
+  #ez a kiindexelés
   def index
     @title = "All users"
     @users = User.paginate(:page => params[:page])
@@ -36,10 +39,12 @@ class UsersController < ApplicationController
     end
   end
   
+  #profile edit
   def edit
     @title = "Edit user"
   end
   
+  #update gomb
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
@@ -69,6 +74,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers.paginate(:page => params[:page])
     render 'show_follow'
+  end
+  
+  def printout
+    @title = "printout"
+    @users = User.paginate(:page => params[:page])
   end
 
 
